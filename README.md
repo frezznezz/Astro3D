@@ -1,58 +1,148 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Astro3D
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website jasa 3D printing Astro3D — partner produksi dari satuan hingga batch. Dibangun dengan Laravel, Vite, dan Tailwind CSS, dengan konten multibahasa (Indonesia, English, 中文).
 
-## About Laravel
+Live brand: [astro3d.id](https://astro3d.id)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Landing page produksi: hero video, keunggulan, material (PLA / PETG / ABS), galeri, alur, ulasan, FAQ, CTA
+- Bahasa: ID / EN / 中文 (disimpan di session)
+- Link WhatsApp & email di-obfuscate (anti-scrape sederhana)
+- UI dark glass / gradient, responsive
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Yang perlu diinstall
 
-## Learning Laravel
+| Tool | Versi | Catatan |
+|------|--------|---------|
+| PHP | 8.3+ (disarankan 8.4) | Extensi umum Laravel: `mbstring`, `openssl`, `pdo`, `tokenizer`, `xml`, `ctype`, `json`, `bcmath`, `fileinfo` |
+| Composer | 2.x | Dependency PHP |
+| Node.js | 20+ LTS | Bundling Vite |
+| npm | ikut Node | Dependency frontend |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Opsional (Windows): [Laragon](https://laragon.org/) — PHP, Composer, dan virtual host sudah siap.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Setup lokal
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Dari root project:
 
 ```bash
-composer require laravel/boost --dev
+# 1) Dependency PHP
+composer install
 
-php artisan boost:install
+# 2) Environment
+cp .env.example .env
+php artisan key:generate
+
+# 3) Database (default: SQLite)
+# Pastikan file database ada, lalu migrate (dibutuhkan untuk session)
+touch database/database.sqlite   # macOS / Linux
+# Windows PowerShell:
+# New-Item -ItemType File -Force database/database.sqlite
+
+php artisan migrate
+
+# 4) Frontend
+npm install
+npm run build
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Atau sekali jalan (script bawaan Laravel):
 
-## Contributing
+```bash
+composer setup
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+> `composer setup` akan `composer install`, salin `.env` jika belum ada, generate key, migrate, `npm install`, dan `npm run build`.
 
-## Code of Conduct
+### Catatan `.env`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Minimal yang relevan untuk preview:
 
-## Security Vulnerabilities
+```env
+APP_NAME=Astro3D
+APP_URL=http://localhost:8000
+APP_LOCALE=id
+APP_FALLBACK_LOCALE=id
+DB_CONNECTION=sqlite
+SESSION_DRIVER=database
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Untuk Laragon virtual host, sesuaikan misalnya:
 
-## License
+```env
+APP_URL=http://astro3d.test
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Preview di lokal
+
+### Opsi A — paling sederhana (PHP + Vite)
+
+Terminal 1:
+
+```bash
+php artisan serve
+```
+
+Terminal 2 (hot reload CSS/JS):
+
+```bash
+npm run dev
+```
+
+Buka: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+### Opsi B — satu perintah
+
+```bash
+composer run dev
+```
+
+Menjalankan server Laravel + Vite (dan proses terkait) bersamaan.
+
+### Opsi C — Laragon
+
+1. Letakkan project di `C:\laragon\www\astro3d` (atau path www Laragon Anda)
+2. Start Laragon (Apache/Nginx + PHP)
+3. Akses `http://astro3d.test` (atau host yang Laragon buat)
+4. Jalankan `npm run dev` saat mengembangkan CSS/JS, atau `npm run build` untuk asset production
+
+## Perintah berguna
+
+```bash
+# Build asset production
+npm run build
+
+# Jalankan test
+php artisan test
+# atau
+composer test
+
+# Format PHP (Pint)
+vendor/bin/pint
+```
+
+## Struktur singkat
+
+```text
+app/                  # Middleware locale, controller ganti bahasa
+lang/{id,en,zh}/      # Terjemahan halaman
+resources/views/      # Blade (home)
+resources/css/        # Tailwind + custom UI
+resources/js/         # Nav, slider, carousel ulasan, protect contact
+public/images/        # Logo, material, galeri
+public/videos/        # Video hero
+routes/web.php        # / dan /locale/{locale}
+```
+
+## Ganti bahasa
+
+Switcher **ID · EN · 中文** di header. Route: `/locale/{id|en|zh}` (menyimpan pilihan di session).
+
+## Kontak di kode
+
+Nomor WhatsApp & email tidak ditulis plain sebagai `href` siap-scrape; di-encode dan di-unlock saat interaksi user. Update nomor/email di `resources/views/home.blade.php` (variabel `$waConsult`, `$waFile`, `$email`).
+
+## Lisensi
+
+Kode berbasis skeleton Laravel (MIT). Konten brand & aset Astro3D milik pemilik proyek.
