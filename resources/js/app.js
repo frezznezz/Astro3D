@@ -105,3 +105,75 @@ document.querySelectorAll('[data-protect-contact]').forEach((el) => {
         }
     });
 });
+
+const reviewCarousel = document.querySelector('[data-review-carousel]');
+const reviewSlides = [...document.querySelectorAll('.review-slide')];
+const reviewPrev = document.querySelector('[data-review-prev]');
+const reviewNext = document.querySelector('[data-review-next]');
+let reviewPage = 0;
+let reviewTimer;
+
+const reviewPageSize = () => {
+    if (window.matchMedia('(max-width: 640px)').matches) {
+        return 1;
+    }
+
+    if (window.matchMedia('(max-width: 1100px)').matches) {
+        return 2;
+    }
+
+    return 3;
+};
+
+const reviewPageCount = () => Math.max(1, Math.ceil(reviewSlides.length / reviewPageSize()));
+
+const renderReviewPage = (page) => {
+    if (!reviewSlides.length) {
+        return;
+    }
+
+    const size = reviewPageSize();
+    const total = reviewPageCount();
+    reviewPage = ((page % total) + total) % total;
+    const start = reviewPage * size;
+
+    reviewSlides.forEach((slide, index) => {
+        slide.classList.toggle('is-active', index >= start && index < start + size);
+    });
+};
+
+const stopReviewAutoplay = () => {
+    clearInterval(reviewTimer);
+    reviewTimer = undefined;
+};
+
+const startReviewAutoplay = () => {
+    if (!reviewSlides.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    stopReviewAutoplay();
+    reviewTimer = setInterval(() => {
+        renderReviewPage(reviewPage + 1);
+    }, 4500);
+};
+
+reviewPrev?.addEventListener('click', () => {
+    renderReviewPage(reviewPage - 1);
+    startReviewAutoplay();
+});
+
+reviewNext?.addEventListener('click', () => {
+    renderReviewPage(reviewPage + 1);
+    startReviewAutoplay();
+});
+
+reviewCarousel?.addEventListener('pointerenter', stopReviewAutoplay);
+reviewCarousel?.addEventListener('pointerleave', startReviewAutoplay);
+
+window.addEventListener('resize', () => {
+    renderReviewPage(reviewPage);
+});
+
+renderReviewPage(0);
+startReviewAutoplay();

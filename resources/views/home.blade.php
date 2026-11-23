@@ -263,32 +263,38 @@
         {{-- Reviews --}}
         <section class="section" id="ulasan" aria-labelledby="reviews-title">
             <div class="shell">
-                <div class="section-head section-head-row">
-                    <div>
+                <div class="section-head gallery-head">
+                    <div class="gallery-copy">
                         <p class="eyebrow">{{ __('site.reviews.eyebrow') }}</p>
                         <h2 id="reviews-title">
                             {{ __('site.reviews.title_before') }}<span class="text-gradient">{{ __('site.reviews.title_highlight') }}</span>
                         </h2>
                         <p class="section-lead">{{ __('site.reviews.lead') }}</p>
+                        <a class="btn-ghost review-shopee" href="https://shopee.co.id/astro_3d" target="_blank" rel="noopener noreferrer">{{ __('site.reviews.shopee') }}</a>
                     </div>
-                    <a class="btn-ghost" href="https://shopee.co.id/astro_3d" target="_blank" rel="noopener noreferrer">{{ __('site.reviews.shopee') }}</a>
+
+                    <div class="slider-nav">
+                        <button type="button" class="slider-btn" data-review-prev aria-label="{{ __('site.reviews.prev') }}">
+                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="slider-btn" data-review-next aria-label="{{ __('site.reviews.next') }}">
+                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div class="review-grid">
-                    <blockquote class="glass-card" data-tilt>
-                        <p class="stars" aria-label="{{ __('site.reviews.rating') }}">★★★★★</p>
-                        <p>Pemesanan kali kedua, dan pasti akan langganan disini hasil mantap, proses cepat, harga termurah</p>
-                        <footer>f***f</footer>
-                    </blockquote>
-                    <blockquote class="glass-card" data-tilt>
-                        <p class="stars" aria-label="{{ __('site.reviews.rating') }}">★★★★★</p>
-                        <p>Kualitas barang baru, Harga yang ditawarkan bersaing, pemrosesan penjualan sampai packing sangat cepat, packing aman dan rapi. Profesional dan Recommended Seller !</p>
-                        <footer>s***e</footer>
-                    </blockquote>
-                    <blockquote class="glass-card" data-tilt>
-                        <p class="stars" aria-label="{{ __('site.reviews.rating') }}">★★★★★</p>
-                        <p>Rapi, cepet, responsif</p>
-                        <footer>l***c</footer>
-                    </blockquote>
+
+                <div class="review-carousel" data-review-carousel>
+                    @foreach (trans('site.reviews.items', [], 'id') as $review)
+                        <blockquote class="review-slide glass-card" data-tilt>
+                            <p class="stars" aria-label="{{ __('site.reviews.rating') }}">★★★★★</p>
+                            <p>{{ $review['body'] }}</p>
+                            <footer>{{ $review['name'] }}</footer>
+                        </blockquote>
+                    @endforeach
                 </div>
             </div>
         </section>

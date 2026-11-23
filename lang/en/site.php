@@ -170,6 +170,8 @@ return [
         'lead' => 'Clients return for fast turnaround, neat packing, and quality they can rely on.',
         'shopee' => 'View on Shopee →',
         'rating' => '5 out of 5 rating',
+        'prev' => 'Previous',
+        'next' => 'Next',
     ],
 
     'faq' => [

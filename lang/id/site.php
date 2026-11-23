@@ -170,6 +170,90 @@ return [
         'lead' => 'Klien kembali karena pengerjaan cepat, packing rapi, dan kualitas yang bisa diandalkan.',
         'shopee' => 'Lihat di Shopee →',
         'rating' => 'Rating 5 dari 5',
+        'prev' => 'Sebelumnya',
+        'next' => 'Berikutnya',
+        'items' => [
+            [
+                'name' => 'f***f',
+                'body' => 'Pemesanan kali kedua, dan pasti akan langganan disini hasil mantap, proses cepat, harga termurah',
+            ],
+            [
+                'name' => 's***e',
+                'body' => 'Kualitas barang baru, Harga yang ditawarkan bersaing, pemrosesan penjualan sampai packing sangat cepat, packing aman dan rapi. Profesional dan Recommended Seller !',
+            ],
+            [
+                'name' => 'l***c',
+                'body' => 'Rapi, cepet, responsif',
+            ],
+            [
+                'name' => 'M*****l',
+                'body' => 'Konsultasi materialnya jelas dan membantu. Hasil cetak sesuai spesifikasi, cocok untuk prototipe produk kami.',
+            ],
+            [
+                'name' => 'A****a',
+                'body' => 'Proses dari file sampai pengiriman transparan. Tim Astro3D komunikatif dan tepat waktu.',
+            ],
+            [
+                'name' => 'R****o',
+                'body' => 'Sudah order batch kecil untuk spare part. Dimensi akurat, finishing rapi, packing sangat aman.',
+            ],
+            [
+                'name' => 'D****i',
+                'body' => 'Rekomendasi PETG-nya tepat untuk part fungsional. Hasil kuat dan tidak mudah retak.',
+            ],
+            [
+                'name' => 'N****a',
+                'body' => 'Pengerjaan cepat tanpa mengorbankan kualitas. Cocok untuk deadline proyek yang mepet.',
+            ],
+            [
+                'name' => 'B****y',
+                'body' => 'Detail cetakan tajam, warna konsisten antar batch. Sangat membantu produksi merchandise brand kami.',
+            ],
+            [
+                'name' => 'S****a',
+                'body' => 'Respons WhatsApp cepat, penawaran jelas sebelum cetak. Tidak ada biaya mendadak di akhir.',
+            ],
+            [
+                'name' => 'H****n',
+                'body' => 'QC-nya terasa. Barang yang kami terima sesuai foto referensi dan ukuran yang diminta.',
+            ],
+            [
+                'name' => 'K****i',
+                'body' => 'Order satuan untuk uji desain dulu, lanjut batch setelah approve. Alurnya profesional.',
+            ],
+            [
+                'name' => 'T****o',
+                'body' => 'Material ABS untuk housing elektronik kami tahan suhu operasional. Hasilnya memuaskan.',
+            ],
+            [
+                'name' => 'F****h',
+                'body' => 'Maket arsitektur keluar dengan detail bersih. Klien kami juga langsung setuju desainnya.',
+            ],
+            [
+                'name' => 'W****n',
+                'body' => 'Harga batch masuk akal untuk volume menengah. Pengiriman ke luar kota tetap aman.',
+            ],
+            [
+                'name' => 'J****a',
+                'body' => 'File STEP kami dicek dulu kelayakannya. Revisi kecil ditanggapi cepat sebelum produksi.',
+            ],
+            [
+                'name' => 'P****i',
+                'body' => 'Sudah beberapa kali order jig produksi. Toleransi akurat dan pengerjaan konsisten.',
+            ],
+            [
+                'name' => 'E****s',
+                'body' => 'Pelayanan ramah dan teknis. Cocok untuk yang baru mulai cetak 3D maupun kebutuhan bisnis.',
+            ],
+            [
+                'name' => 'G****g',
+                'body' => 'Packing rapi berlapis, tidak ada goresan. Estimasi 1-3 hari benar-benar ditepati.',
+            ],
+            [
+                'name' => 'C****a',
+                'body' => 'Dari konsultasi sampai barang sampai, semuanya terstruktur. Recommended untuk produksi berulang.',
+            ],
+        ],
     ],
 
     'faq' => [

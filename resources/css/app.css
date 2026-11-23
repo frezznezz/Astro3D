@@ -830,13 +830,29 @@ button {
 }
 
 /* Reviews */
-.review-grid {
+.review-shopee {
+    display: inline-flex;
+    margin-top: 1rem;
+}
+
+.review-carousel {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
 }
 
-.review-grid .stars {
+.review-slide {
+    display: none;
+    margin: 0;
+    min-height: 100%;
+}
+
+.review-slide.is-active {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-slide .stars {
     margin: 0 0 0.7rem;
     background: var(--grad-hero);
     -webkit-background-clip: text;
@@ -845,7 +861,15 @@ button {
     letter-spacing: 0.08em;
 }
 
-.review-grid footer {
+.review-slide p:not(.stars) {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 0.94rem;
+    flex: 1;
+}
+
+.review-slide footer {
     margin-top: 1rem;
     font-size: 0.85rem;
     font-weight: 700;
@@ -1002,7 +1026,7 @@ button {
 @media (max-width: 1100px) {
     .glass-grid,
     .process-grid,
-    .review-grid,
+    .review-carousel,
     .gallery-slider,
     .material-guide {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1133,7 +1157,7 @@ button {
 
     .glass-grid,
     .process-grid,
-    .review-grid,
+    .review-carousel,
     .gallery-slider,
     .material-guide {
         grid-template-columns: 1fr;
