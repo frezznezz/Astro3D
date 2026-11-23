@@ -17,6 +17,8 @@
         $locale = app()->getLocale();
         $waConsult = 'https://wa.me/6282297065801?text=' . rawurlencode(__('site.wa.consult'));
         $waFile = 'https://wa.me/6282297065801?text=' . rawurlencode(__('site.wa.file'));
+        $email = 'mailto:astro3d.id@gmail.com';
+        $protect = static fn (string $url): string => base64_encode($url);
         $locales = [
             'id' => __('site.lang.id'),
             'en' => __('site.lang.en'),
@@ -45,7 +47,7 @@
                 <nav class="site-nav" id="site-nav" aria-label="{{ __('site.nav.label') }}">
                     <a href="#material">{{ __('site.nav.batch') }}</a>
                     <a href="#hasil-cetak">{{ __('site.nav.gallery') }}</a>
-                    <a class="nav-order" href="{{ $waConsult }}" target="_blank" rel="noreferrer">
+                    <a class="nav-order" href="#" data-protect-contact="{{ $protect($waConsult) }}" target="_blank" rel="noopener noreferrer nofollow">
                         {{ __('site.nav.order') }} <span aria-hidden="true">↗</span>
                     </a>
                 </nav>
@@ -76,7 +78,7 @@
                         {{ __('site.hero.lead') }}
                     </p>
                     <div class="hero-actions">
-                        <a class="btn-hero" href="{{ $waFile }}" target="_blank" rel="noreferrer">
+                        <a class="btn-hero" href="#" data-protect-contact="{{ $protect($waFile) }}" target="_blank" rel="noopener noreferrer nofollow">
                             {{ __('site.hero.cta_file') }} <span aria-hidden="true">↗</span>
                         </a>
                         <a class="hero-secondary" href="#hasil-cetak">
@@ -150,7 +152,7 @@
                             {{ __('site.materials.lead') }}
                         </p>
                     </div>
-                    <a class="btn-glow" href="{{ $waConsult }}" target="_blank" rel="noreferrer">{{ __('site.materials.cta') }}</a>
+                    <a class="btn-glow" href="#" data-protect-contact="{{ $protect($waConsult) }}" target="_blank" rel="noopener noreferrer nofollow">{{ __('site.materials.cta') }}</a>
                 </div>
 
                 <div class="material-guide">
@@ -318,7 +320,7 @@
                     <h2>{{ __('site.cta.title') }}</h2>
                     <p>{{ __('site.cta.body') }}</p>
                 </div>
-                <a class="btn-glow btn-glow-lg" href="{{ $waFile }}" target="_blank" rel="noreferrer">
+                <a class="btn-glow btn-glow-lg" href="#" data-protect-contact="{{ $protect($waFile) }}" target="_blank" rel="noopener noreferrer nofollow">
                     {{ __('site.cta.button') }} <span aria-hidden="true">↗</span>
                 </a>
             </div>
@@ -339,8 +341,8 @@
                 <a href="#faq">{{ __('site.footer.faq') }}</a>
             </div>
             <div class="footer-contact">
-                <a href="{{ $waFile }}" target="_blank" rel="noreferrer">WhatsApp: +62 822-9706-5801</a>
-                <a href="mailto:astro3d.id@gmail.com">astro3d.id@gmail.com</a>
+                <a href="#" data-protect-contact="{{ $protect($waFile) }}" target="_blank" rel="noopener noreferrer nofollow">WhatsApp: +62 822-9706-5801</a>
+                <a href="#" data-protect-contact="{{ $protect($email) }}" rel="noopener noreferrer nofollow">astro3d.id@gmail.com</a>
                 <a href="https://shopee.co.id/astro_3d" target="_blank" rel="noopener noreferrer">{{ __('site.footer.shopee') }}</a>
             </div>
         </div>

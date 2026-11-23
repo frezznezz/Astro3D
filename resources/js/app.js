@@ -72,3 +72,36 @@ const onScroll = () => {
 
 window.addEventListener('scroll', onScroll, { passive: true });
 syncHeader();
+
+const revealProtectedContact = (el) => {
+    if (el.dataset.contactReady === '1') {
+        return true;
+    }
+
+    try {
+        const url = atob(el.dataset.protectContact || '');
+        if (!url) {
+            return false;
+        }
+
+        el.setAttribute('href', url);
+        el.dataset.contactReady = '1';
+        return true;
+    } catch {
+        return false;
+    }
+};
+
+document.querySelectorAll('[data-protect-contact]').forEach((el) => {
+    const unlock = () => revealProtectedContact(el);
+
+    el.addEventListener('pointerdown', unlock, { passive: true });
+    el.addEventListener('touchstart', unlock, { passive: true });
+    el.addEventListener('focus', unlock);
+
+    el.addEventListener('click', (event) => {
+        if (!revealProtectedContact(el) || el.getAttribute('href') === '#') {
+            event.preventDefault();
+        }
+    });
+});
