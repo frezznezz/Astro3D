@@ -123,7 +123,7 @@ button {
     flex: 1 1 280px;
 }
 
-/* Header — in document flow, sticks on scroll (no fixed overlay) */
+/* Header - in document flow, sticks on scroll (no fixed overlay) */
 .site-header {
     position: sticky;
     top: 0;
@@ -148,6 +148,39 @@ button {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+}
+
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.lang-switch__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    padding: 0.28rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.04em;
+    color: rgba(238, 242, 255, 0.72);
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.lang-switch__link:hover {
+    color: #fff;
+}
+
+.lang-switch__link.is-active {
+    color: #050607;
+    background: #fff;
 }
 
 .brand-logo,
@@ -284,7 +317,7 @@ button {
     color: #fff;
 }
 
-/* Hero — copied from live astro3d.id home-hero rules */
+/* Hero - copied from live astro3d.id home-hero rules */
 .hero {
     position: relative;
     isolation: isolate;
@@ -307,7 +340,7 @@ button {
         linear-gradient(#0506071f, #05060740 55%, #050607 100%);
 }
 
-/* Exact live ::after blue glow — bottom RIGHT */
+/* Exact live ::after blue glow - bottom RIGHT */
 .hero::after {
     content: '';
     position: absolute;
@@ -854,7 +887,7 @@ button {
 }
 
 .faq-item[open] summary::after {
-    content: '–';
+    content: '-';
 }
 
 .faq-item p {
@@ -992,6 +1025,13 @@ button {
     .header-right {
         align-items: center;
         height: 100%;
+        gap: 0.45rem;
+    }
+
+    .lang-switch__link {
+        min-width: 1.75rem;
+        padding: 0.24rem 0.42rem;
+        font-size: 0.68rem;
     }
 
     .brand {
