@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ __('site.meta.title') }}</title>
     <meta name="description" content="{{ __('site.meta.description') }}">
+    <meta name="theme-color" content="#050607">
+    <link rel="canonical" href="{{ route('home') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Astro3D">
+    <meta property="og:url" content="{{ route('home') }}">
+    <meta property="og:locale" content="{{ str_replace('-', '_', app()->getLocale()) }}">
     <meta property="og:title" content="{{ __('site.meta.og_title') }}">
     <meta property="og:description" content="{{ __('site.meta.og_description') }}">
-    <meta property="og:image" content="{{ asset('images/og.png') }}">
+    <meta property="og:image" content="{{ asset('images/og.jpg') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ __('site.meta.og_title') }}">
+    <meta name="twitter:description" content="{{ __('site.meta.og_description') }}">
+    <meta name="twitter:image" content="{{ asset('images/og.jpg') }}">
     <link rel="icon" href="{{ asset('images/astro3d-hitam.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/style.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
